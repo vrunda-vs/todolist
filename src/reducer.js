@@ -24,7 +24,13 @@ const reducer=(state=initialState,action)=>{
                     ...state,
                     todos:state.todos.filter(todo=>todo.status),
                 }
-            
+        case 'COMPLETETASK':
+            return{
+                
+                ...state,
+                todos:state.todos[action.payload].status=true,
+
+            }
         default:
             return state;
     }

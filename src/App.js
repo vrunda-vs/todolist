@@ -9,12 +9,18 @@ const Todos = () => {
     type:'REMOVE_TODO',
     payload:id, 
   })
+  const handlecomplete=id=>dispatch(
+   
+    {
+    type:'COMPLETETASK',
+    payload:id
+  })
   if (!todos || !todos.length) {
     return <p>no todos</p>
   }
   return (
     <ul>
-      {todos.map(todo => <li onClick={()=>handleclick(todo.id)}>{todo.label}</li>)}
+      {todos.map(todo => todo.status===true?<li>{todo.label}<button onClick={()=>handleclick(todo.id)}>  Delete</button></li>:<div><li>{todo.label} <button onClick={()=>handlecomplete(todo.id)}>  complete</button>  <button onClick={()=>handleclick(todo.id)}>  Delete</button></li></div>)}
     </ul>
   )
 };
